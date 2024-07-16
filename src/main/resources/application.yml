@@ -1,4 +1,3 @@
-
 spring:
     application:
         name: CurdApplication
@@ -13,4 +12,8 @@ spring:
         url: jdbc:mysql://localhost:3306/curd
         username: root
         password: Kn0t12#$
-    
+    batch:
+      jdbc:
+        initialize-schema: ALWAYS
+        
+

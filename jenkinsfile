@@ -1,0 +1,22 @@
+pipeline{
+    agent any
+    tools{
+        maven "Maven 3.9.8"
+        
+    }
+    stages{
+        stage("maven Build"){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/VaraPrasad63020/BackEndApplicationCURD.git']])
+                bat "mvn clean install"
+            }
+        }
+        stage("build Docker images"){
+            steps{
+                script{
+                    bat "docker build -t gudapativaraprasad1986/curdapplication ."
+                }
+            }
+        }
+    }
+}
